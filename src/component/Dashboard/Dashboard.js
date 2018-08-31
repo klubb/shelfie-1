@@ -11,6 +11,11 @@ class Dashboard extends Component {
         this.deleteProduct = this.deleteProduct.bind(this)
     }
 
+    componentDidMount() {
+        axios.get('/api/inventory')
+        .then(response => this.setState({inventory: response.data}))
+      }
+
     deleteProduct(id) {
     console.log(id)
       axios.delete(`/api/product/${id}`)

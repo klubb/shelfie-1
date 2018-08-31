@@ -36,7 +36,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.editing)
     return (
       <div className="App">
       <Header />
