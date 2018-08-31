@@ -18,9 +18,12 @@ class Dashboard extends Component {
     }
 
     render() {
+        console.log("EDITING",this.props.editing)
         const inventoryArr = this.props.list.map((product, index) => {
             return (
                 <Product
+                editor={this.props.editor}
+                editing={this.props.editing}
                 edit={this.props.edit}
                 delete={this.deleteProduct}
                 key={index}

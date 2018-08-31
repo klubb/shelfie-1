@@ -10,10 +10,12 @@ class App extends Component {
     super(props)
     this.state = {
       inventory: [],
-      item: []
+      item: [],
+      editing: false
     }
     this.componentDidMount = this.componentDidMount.bind(this)
     this.currentEdit = this.currentEdit.bind(this)
+    this.isEditing = this.isEditing.bind(this)
   }
 
   componentDidMount() {
@@ -22,18 +24,26 @@ class App extends Component {
   }
 
   currentEdit(id) {
-    this.setState({item: this.state.inventory[id]})
+    let filt = this.state.inventory.map((item,index) => {
+      if (item.product_key === id) {
+        this.setState({item: this.state.inventory[index]})
+      }
+    })
+  }
+
+  isEditing() {
+  this.state.editing ? this.setState({editing: false}) : this.setState({editing: true})
   }
 
   render() {
-    console.log(this.state.inventory)
+    console.log(this.state.editing)
     return (
       <div className="App">
       <Header />
       <div className='left_container'>
-      <Dashboard mount={this.componentDidMount} list={this.state.inventory} edit={this.currentEdit} />
+      <Dashboard mount={this.componentDidMount} list={this.state.inventory} editor={this.state.editing} edit={this.currentEdit} editing={this.isEditing}/>
       </div>
-      <Form mount={this.componentDidMount} item={this.state.item}/>
+      <Form mount={this.componentDidMount} item={this.state.item} editor={this.state.editing}/>
       </div>
     );
   }

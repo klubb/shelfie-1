@@ -37,15 +37,16 @@
     width: 10vw;
     height: 10vh;
     position: absolute;
-    margin-left: 24vw;
+    margin-left: 23vw;
     margin-top: -28vh;
     font-family: 'Open Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
 }
 
 .text_box h1 {
     float: left;
     font-size: 4vh;
-    margin-right: 10vw;
     margin-bottom: 2vh;
 }
 
