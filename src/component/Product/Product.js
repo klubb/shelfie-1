@@ -21,7 +21,7 @@ return (
         </div>
         <div className='product_buttons'>
             <button onClick={() => props.delete(props.index)} id='product_left'>Delete</button>
-            <button id='product_right'>Edit</button>
+            <button onClick={() => props.edit(props.image)} id='product_right'>Edit</button>
         </div>
     </div>
 )
