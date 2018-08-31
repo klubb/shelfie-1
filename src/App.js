@@ -1,18 +1,32 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Dashboard from './component/Dashboard/Dashboard'
+import Form from './component/Form/Form'
+import Header from './component/Header/Header'
+import axios from 'axios'
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      inventory: [],
+    }
+    this.componentDidMount = this.componentDidMount.bind(this)
+  }
+
+  componentDidMount() {
+    axios.get('/api/inventory')
+    .then(response => this.setState({inventory: response.data}))
+  }
   render() {
+    console.log(this.state)
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <Header />
+      <div className='left_container'>
+      <Dashboard mount={this.componentDidMount} list={this.state.inventory}/>
+      </div>
+      <Form mount={this.componentDidMount} />
       </div>
     );
   }

@@ -1,0 +1,15 @@
+.header_container {
+    width: 100vw;
+    height: 15vh;
+    background-color: #AB2A19;
+    box-sizing: border-box;
+    padding-left: 5vw;
+    padding-top: 2vh;
+    position: fixed;
+    z-index: 1;
+}
+
+.header_container img {
+    float: left;
+    height: 11vh;
+}
